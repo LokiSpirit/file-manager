@@ -13,6 +13,7 @@ import deleteFile from '../commands/rm.js';
 import calculateHash from '../commands/hash.js';
 import compressFile from '../commands/compress.js';
 import decompressFile from '../commands/decompress.js';
+import handleOsCommand from '../commands/os.js';
 
 export const run = () => {
   const rl = createInterface({
@@ -22,7 +23,7 @@ export const run = () => {
 
   rl.on('line', async (input) => {
     const [command, ...args] = input.trim().split(' ');
-
+    console.log('Please wait...');
     switch (command) {
       case 'up':
         goUp();
@@ -70,6 +71,8 @@ export const run = () => {
         console.log('Invalid input');
         console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
     }
+    console.log();
+    console.log('Enter your command please:');
   });
 
   rl.on('close', () => {

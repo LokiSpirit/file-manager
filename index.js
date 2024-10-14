@@ -10,5 +10,6 @@ process.on('SIGINT', () => {
 });
 
 console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+console.log('Enter your command please');
 
 run();
