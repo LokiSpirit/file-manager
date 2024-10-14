@@ -1,15 +1,14 @@
-const os = require('os');
-const path = require('path');
+import { CURRENT_PATH } from './helper/currentPath.js';
+import { run } from './helper/run.js';
+import { USER } from './helper/user.js';
 
-const usernameArg = process.argv.find((arg) => arg.startsWith('--username='));
-const username = usernameArg ? usernameArg.split('=')[1] : 'User';
-
-console.log(`Welcome to the File Manager, ${username}!`);
+console.log(`Welcome to the File Manager, ${USER}!`);
 
 process.on('SIGINT', () => {
-  console.log(`Thank you for using File Manager, ${username}, goodbye!`);
+  console.log(`Thank you for using File Manager, ${USER}, goodbye!`);
   process.exit();
 });
 
-let currentDirectory = os.homedir();
-console.log(`You are currently in ${currentDirectory}`);
+console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+
+run();
