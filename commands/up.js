@@ -4,13 +4,12 @@ import welcome from '../helper/welcome.js';
 
 const goUp = () => {
   const currentDirectory = CURRENT_PATH.getCurPath();
-  const newDir = path.resolve(currentDirectory, '..');
-
-  if (newDir !== path.parse(currentDirectory).root) {
+  if (currentDirectory === path.parse(currentDirectory).root) {
+    console.log('You are currently at the root directory');
+  } else {
+    const newDir = path.resolve(currentDirectory, '..');
     CURRENT_PATH.setCurPath(newDir);
     console.log(`You are currently in ${newDir}`);
-  } else {
-    console.log('You are currently at the root directory');
   }
   welcome();
 };
