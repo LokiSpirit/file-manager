@@ -10,6 +10,7 @@ import renameFile from '../commands/rn.js';
 import moveFile from '../commands/mv.js';
 import copyFile from '../commands/cp.js';
 import deleteFile from '../commands/rm.js';
+import calculateHash from '../commands/hash.js';
 
 export const run = () => {
   const rl = createInterface({
