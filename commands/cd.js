@@ -9,11 +9,11 @@ const changeDirectory = async (newPath) => {
 
   try {
     await fs.access(absolutePath);
-
     CURRENT_PATH.setCurPath(absolutePath);
-    console.log(`You are currently in ${absolutePath}`);
   } catch (err) {
     console.log('Operation failed');
+  } finally {
+    console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
   }
 };
 
