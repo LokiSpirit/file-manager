@@ -4,6 +4,12 @@ import { CURRENT_PATH } from '../helper/currentPath.js';
 import goUp from '../commands/up.js';
 import changeDirectory from '../commands/cd.js';
 import listDirectory from '../commands/ls.js';
+import readFile from '../commands/cat.js';
+import createFile from '../commands/add.js';
+import renameFile from '../commands/rn.js';
+import moveFile from '../commands/mv.js';
+import copyFile from '../commands/cp.js';
+import deleteFile from '../commands/rm.js';
 
 export const run = () => {
   const rl = createInterface({
@@ -28,19 +34,19 @@ export const run = () => {
         readFile(args[0]);
         break;
       case 'add':
-        createFile(args[0]);
+        await createFile(args[0]);
         break;
       case 'rn':
-        renameFile(args[0], args[1]);
+        await renameFile(args[0], args[1]);
         break;
       case 'cp':
         copyFile(args[0], args[1]);
         break;
       case 'mv':
-        moveFile(args[0], args[1]);
+        await moveFile(args[0], args[1]);
         break;
       case 'rm':
-        deleteFile(args[0]);
+        await deleteFile(args[0]);
         break;
       case 'os':
         handleOsCommand(args[0]);
