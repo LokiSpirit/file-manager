@@ -11,6 +11,8 @@ import moveFile from '../commands/mv.js';
 import copyFile from '../commands/cp.js';
 import deleteFile from '../commands/rm.js';
 import calculateHash from '../commands/hash.js';
+import compressFile from '../commands/compress.js';
+import decompressFile from '../commands/decompress.js';
 
 export const run = () => {
   const rl = createInterface({
