@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import zlib from 'zlib';
 import { CURRENT_PATH } from '../helper/currentPath.js';
+import welcome from '../helper/welcome.js';
 
 const compressFile = (filePath, destinationPath) => {
   const absoluteFilePath = path.isAbsolute(filePath)
@@ -22,11 +23,13 @@ const compressFile = (filePath, destinationPath) => {
       console.log(`File compressed to ${absoluteDestPath}`);
       console.log();
       console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+      welcome();
     })
     .on('error', () => {
       console.log('Operation failed');
       console.log();
       console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+      welcome();
     });
 };
 

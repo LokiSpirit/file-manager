@@ -4,6 +4,7 @@ import getHomeDirectory from '../helper/homedir.js';
 import getSystemUsername from '../helper/username.js';
 import getArchitecture from '../helper/architecture.js';
 import { CURRENT_PATH } from '../helper/currentPath.js';
+import welcome from '../helper/welcome.js';
 
 const handleOsCommand = (arg) => {
   switch (arg) {
@@ -26,6 +27,7 @@ const handleOsCommand = (arg) => {
       console.log('Invalid input');
   }
   console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+  welcome();
 };
 
 export default handleOsCommand;

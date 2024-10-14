@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { CURRENT_PATH } from '../helper/currentPath.js';
+import welcome from '../helper/welcome.js';
 
 const readFile = (filePath) => {
   const absolutePath = path.isAbsolute(filePath)
@@ -15,11 +16,14 @@ const readFile = (filePath) => {
 
   readableStream.on('error', () => {
     console.log('Operation failed');
+    console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+    welcome();
   });
 
   readableStream.on('end', () => {
     console.log();
     console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+    welcome();
   });
 };
 

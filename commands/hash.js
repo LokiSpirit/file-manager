@@ -2,6 +2,7 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import { CURRENT_PATH } from '../helper/currentPath.js';
+import welcome from '../helper/welcome.js';
 
 const calculateHash = (filePath) => {
   const absoluteFilePath = path.isAbsolute(filePath)
@@ -19,12 +20,14 @@ const calculateHash = (filePath) => {
     console.log(`Hash: ${hash.digest('hex')}`);
     console.log();
     console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+    welcome();
   });
 
   readableStream.on('error', () => {
     console.log('Operation failed');
     console.log();
     console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+    welcome();
   });
 };
 

@@ -14,6 +14,7 @@ import calculateHash from '../commands/hash.js';
 import compressFile from '../commands/compress.js';
 import decompressFile from '../commands/decompress.js';
 import handleOsCommand from '../commands/os.js';
+import welcome from './welcome.js';
 
 export const run = () => {
   const rl = createInterface({
@@ -30,27 +31,33 @@ export const run = () => {
         break;
       case 'cd':
         await changeDirectory(args[0]);
+        welcome();
         break;
       case 'ls':
         await listDirectory();
+        welcome();
         break;
       case 'cat':
         readFile(args[0]);
         break;
       case 'add':
         await createFile(args[0]);
+        welcome();
         break;
       case 'rn':
         await renameFile(args[0], args[1]);
+        welcome();
         break;
       case 'cp':
         copyFile(args[0], args[1]);
         break;
       case 'mv':
         await moveFile(args[0], args[1]);
+        welcome();
         break;
       case 'rm':
         await deleteFile(args[0]);
+        welcome();
         break;
       case 'os':
         handleOsCommand(args[0]);
@@ -70,9 +77,8 @@ export const run = () => {
       default:
         console.log('Invalid input');
         console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+        welcome();
     }
-    console.log();
-    console.log('Enter your command please:');
   });
 
   rl.on('close', () => {

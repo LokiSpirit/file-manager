@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import zlib from 'zlib';
 import { CURRENT_PATH } from '../helper/currentPath.js';
+import welcome from '../helper/welcome.js';
 
 const decompressFile = (filePath, destinationPath) => {
   const absoluteFilePath = path.isAbsolute(filePath)
@@ -22,11 +23,13 @@ const decompressFile = (filePath, destinationPath) => {
       console.log(`File decompressed to ${absoluteDestPath}`);
       console.log();
       console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+      welcome();
     })
     .on('error', () => {
       console.log('Operation failed');
       console.log();
       console.log(`You are currently in ${CURRENT_PATH.getCurPath()}`);
+      welcome();
     });
 };
 
